@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces"
- >
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Application</title>
-</h:head>
-<h:body>
-    <h:outputStylesheet library="css" name="style.css" />
-	<h2 class="teste">Teste #{testeBean.message}</h2>
-</h:body>
-</html>
+      template="/templates/template-padrao.xhtml">
+
+    <ui:define name="content">
+        <p>
+
+            A CODEA/Gestão Pedagógica convida todas as coordenadorias a participar da campanha contra o câncer de mama. Na sexta-feira é solicitado que todos vistam a cor rosa, decorem suas coordenadorias e tirem fotos para divulgação. Toda semana será lançado um novo tema.
+
+
+
+            Tema dessa semana: Auto exame das Mamas - Como Realizar
+
+            1. No banho, ensaboe as mãos
+            2. Apoe uma mão na cabeça
+            3. Com a outra mão, apalpe com os dedos as mamas no sentido horário
+            4. Repita o passo anterior, mas no sentido anti-horário.
+            Se você detectar a presença de qualquer nódulo, consulte um médico para ter um diagnóstico correto.
+
+        </p>
+    </ui:define>
+</ui:composition >

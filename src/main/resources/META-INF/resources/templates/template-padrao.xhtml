@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces">
+
+  <h:head>
+    <title>CoreUI Free Bootstrap Admin Template</title>
+
+    <!-- Icons-->
+    <link href="node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet" />
+    <link href="node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+
+
+  <h:outputStylesheet library="css" name="style.css" />
+  <h:outputStylesheet library="vendors" name="pace-progress/css/pace.min.css" />
+
+  </h:head>
+  <h:body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+
+    <ui:insert name="header">
+        <ui:include src="fragments/header.xhtml" />
+    </ui:insert>
+
+    <div class="app-body">
+
+        <ui:insert name="sidebar">
+            <ui:include src="fragments/side-bar.xhtml" />
+        </ui:insert>
+
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">
+            <a href="#">Admin</a>
+          </li>
+          <li class="breadcrumb-item active">Dashboard</li>
+          <!-- Breadcrumb Menu-->
+          <li class="breadcrumb-menu d-md-down-none">
+            <div class="btn-group" role="group" aria-label="Button group">
+              <a class="btn" href="#">
+                <i class="icon-speech"></i>
+              </a>
+              <a class="btn" href="./">
+                <i class="icon-graph"></i>  Dashboard</a>
+              <a class="btn" href="#">
+                <i class="icon-settings"></i>  Settings</a>
+            </div>
+          </li>
+        </ol>
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+              <ui:insert name="content" />
+          </div>
+        </div>
+      </main>
+
+    </div>
+    <ui:insert name="footer">
+        <ui:include src="fragments/footer.xhtml" />
+    </ui:insert>
+    <!-- CoreUI and necessary plugins-->
+
+    <h:outputScript library="js" name="jquery.min.js" />
+    <h:outputScript library="js" name="popper.min.js" />
+    <h:outputScript library="js" name="bootstrap.min.js" />
+    <h:outputScript library="js" name="pace.min.js" />
+    <h:outputScript library="js" name="perfect-scrollbar.min.js" />
+    <h:outputScript library="js" name="coreui.min.js" />
+    <h:outputScript library="js" name="main.js" />
+
+  </h:body>
+</html>
