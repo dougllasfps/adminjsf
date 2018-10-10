@@ -9,14 +9,14 @@
   <h:head>
     <title>CoreUI Free Bootstrap Admin Template</title>
 
-    <!-- Icons-->
-    <link href="node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet" />
-    <link href="node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
-    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+    <h:outputStylesheet library="css" name="coreui-icons.min.css"/>
+    <h:outputStylesheet library="css" name="flag-icon.min.css"/>
+    <h:outputStylesheet library="css" name="font-awesome.min.css"/>
+    <h:outputStylesheet library="css" name="simple-line-icons.css"/>
 
 
   <h:outputStylesheet library="css" name="style.css" />
+  <h:outputStylesheet library="css" name="bootstrap.min.css" />
   <h:outputStylesheet library="vendors" name="pace-progress/css/pace.min.css" />
 
   </h:head>
@@ -33,26 +33,6 @@
         </ui:insert>
 
       <main class="main">
-        <!-- Breadcrumb-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <li class="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
-          <li class="breadcrumb-item active">Dashboard</li>
-          <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
-            <div class="btn-group" role="group" aria-label="Button group">
-              <a class="btn" href="#">
-                <i class="icon-speech"></i>
-              </a>
-              <a class="btn" href="./">
-                <i class="icon-graph"></i>  Dashboard</a>
-              <a class="btn" href="#">
-                <i class="icon-settings"></i>  Settings</a>
-            </div>
-          </li>
-        </ol>
         <div class="container-fluid">
           <div class="animated fadeIn">
               <ui:insert name="content" />

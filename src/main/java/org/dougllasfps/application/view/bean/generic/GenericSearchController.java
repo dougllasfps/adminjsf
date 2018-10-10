@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addInfoMessage;
+import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
 import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryCatch;
 
 /**
@@ -28,7 +29,10 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
     public void find(){
         doOnDefaultTryCatch( () ->{
             validateSearch();
-            getService().find(getEntity());
+            this.result = getService().find(getEntity());
+            if(getResult().isEmpty()){
+                addWarnMessage("Nenhum registro encontrado.");
+            }
         });
     }
 
@@ -48,12 +52,16 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
     }
 
     public String prepareFormToViewOrUpdate(T entity){
-        JsfUtil.addRequestParam(ID_PARAM, entity.getId().toString());
+    	JsfUtil.addFlashParam("id", entity.getId().toString());
         return getFormPageLocation();
     }
 
     public void prepareDelete(T entity){
         setEntity(entity);
+    }
+    
+    public String novo() {
+    	return getFormPageLocation();
     }
 
     public String getFormPageLocation(){

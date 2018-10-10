@@ -18,7 +18,7 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
 
     @PostConstruct
     public void init(){
-        String idString = JsfUtil.getRequestParam(ID_PARAM);
+        String idString = (String) JsfUtil.getFlashParam(ID_PARAM);
 
         Optional.ofNullable(idString).ifPresent( i ->{
             Long id = Long.valueOf(i);

@@ -67,7 +67,7 @@ public class JsfUtil implements Serializable {
     }
 
     public static void redirect(String pagina) throws IOException{
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        ExternalContext externalContext = getExternalContext();
         Flash flash = externalContext.getFlash();
         flash.setKeepMessages(true);
         externalContext.redirect(pagina);
@@ -147,12 +147,24 @@ public class JsfUtil implements Serializable {
         }
     }
 
-    public static String getRequestParam(String param){
-        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(param);
+    public static void addFlashParam(String param, String value){
+    	getExternalContext().getFlash().put(param, value);
+    }
+    
+    public static Object getFlashParam(String param){
+    	return getExternalContext().getFlash().get(param);
+    }
+
+	private static ExternalContext getExternalContext() {
+		return FacesContext.getCurrentInstance().getExternalContext();
+	}
+	
+	public static String getRequestParam(String param){
+        return getExternalContext().getRequestParameterMap().get(param);
     }
 
     public static String addRequestParam(String param, String value){
-        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().put(param,value);
+        return getExternalContext().getRequestParameterMap().put(param,value);
     }
 
     @FunctionalInterface

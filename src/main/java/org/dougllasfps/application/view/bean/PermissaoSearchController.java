@@ -15,4 +15,9 @@ import javax.inject.Named;
 @ViewScoped
 public class PermissaoSearchController extends GenericSearchController<Permissao, PermissaoService>{
 
+	@Override
+	public String getFormPageLocation() {
+		// TODO Auto-generated method stub
+		return "/pages/controleacesso/permissao/permissao-form";
+	}
 }
