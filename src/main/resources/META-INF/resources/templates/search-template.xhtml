@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition template="template-padrao.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="content">
+        <ui:insert name="params">
+            <c:set var="bean" value="#{beanName}" />
+        </ui:insert>
+
+        <h:form id="form" prependId="false">
+            <ui:insert name="formContent" />
+            <ui:insert name="searchButton">
+                <button jsf:id="searchBtn">
+                    <i class="fa fa-search"></i> Consultar
+                    <p:ajax process="@form" listener="#{bean.find}" update="resultForm" />
+                </button>
+            </ui:insert>
+        </h:form>
+
+        <h:form id="resultForm" prependId="false">
+            <ui:insert name="resultContent" >
+                <p:dataTable var="_item" value="#{bean.result}" rows="10" paginator="true" paginatorPosition="bottom">
+                    <p:column>
+                        <button jsf:id="btnUpdate" class="btn btn-sm" jsf:action="#{bean.prepareFormToViewOrUpdate(_item)}">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </p:column>
+
+                    <ui:insert name="resultColumns" />
+
+                    <p:column>
+                        <button jsf:id="btnRemove" class="btn btn-sm" >
+                            <i class="fa fa-trash"></i>
+                            <p:ajax process="@this" listener="#{bean.prepareDelete(_item)}" />
+                        </button>
+                    </p:column>
+                </p:dataTable>
+            </ui:insert>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

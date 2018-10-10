@@ -16,7 +16,6 @@ import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryC
 public class GenericSearchController<T extends BaseEntity, S extends GenericService<T>> extends GenericController<T, S> {
 
     protected List<T> result;
-    private T filter;
 
     @PostConstruct
     public void init(){
@@ -29,7 +28,7 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
     public void find(){
         doOnDefaultTryCatch( () ->{
             validateSearch();
-            getService().find(getFilter());
+            getService().find(getEntity());
         });
     }
 
@@ -46,14 +45,6 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
 
     public void setResult(List<T> result) {
         this.result = result;
-    }
-
-    public T getFilter() {
-        return filter;
-    }
-
-    public void setFilter(T filter) {
-        this.filter = filter;
     }
 
     public String prepareFormToViewOrUpdate(T entity){

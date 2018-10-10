@@ -35,7 +35,7 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
     public void find() {
         doOnDefaultTryCatch( () ->{
             validateSearch();
-            Long count = getService().count(getFilter());
+            Long count = getService().count(getEntity());
             setRowCount(count);
             loadActualPage();
             if(getResult().isEmpty()){
@@ -62,7 +62,7 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
     }
 
     private void loadActualPage() {
-        this.result = getService().load( getActualPage(), getRows(), null, getFilter() );
+        this.result = getService().load( getActualPage(), getRows(), null, getEntity() );
     }
 
     public void back(){

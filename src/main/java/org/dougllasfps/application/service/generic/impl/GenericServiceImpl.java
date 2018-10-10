@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.Optional;
 @Service
 public abstract class GenericServiceImpl<T extends BaseEntity, REPOSITORY extends FullRepository<T>> implements GenericService<T>, DemandPaginationService<T> {
 
-    @Autowired
+    @Inject
     private REPOSITORY repository;
     private Class<T> entityClass;
 
