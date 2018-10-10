@@ -1,5 +1,6 @@
 package org.dougllasfps.application.model.controleacesso;
 
+import org.dougllasfps.application.model.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table( name = "permissao",  schema = "controle_acesso")
-public class Permissao implements GrantedAuthority {
+public class Permissao implements GrantedAuthority, BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
