@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
@@ -23,10 +26,12 @@ public class GenericLazySearchControllerTest {
         Assert.assertEquals(totalPages.longValue(), 1l);
     }
 
-    @Test
-    public void deveIrParaProximaPagina(){
+      @Test
+    public void deveTrazerRangeApropriado(){
         bean.setRowCount(1l);
-        bean.foward();
-        Assert.assertEquals(bean.getActualPage().intValue(), 1);
+        List<Integer> pagesRange = bean.getPagesRange();
+        Assert.assertEquals(pagesRange, Arrays.asList(1));
     }
+
+
 }

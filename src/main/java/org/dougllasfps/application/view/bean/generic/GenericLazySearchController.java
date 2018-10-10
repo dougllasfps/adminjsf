@@ -5,6 +5,9 @@ import org.dougllasfps.application.service.generic.GenericService;
 
 import javax.annotation.PostConstruct;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
 import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryCatch;
 
@@ -99,5 +102,13 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
         }
 
         return value;
+    }
+
+    public List<Integer> getPagesRange(){
+        List<Integer> values = new ArrayList<>();
+        for(int x = 1; x <= getTotalPages(); x++){
+            values.add(x);
+        }
+        return values;
     }
 }
