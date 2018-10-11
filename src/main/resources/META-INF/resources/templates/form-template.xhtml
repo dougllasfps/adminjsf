@@ -20,23 +20,28 @@
         
             <ui:insert name="formContent" />
             <ui:insert name="submitButtons">
+
 	            <div class="row">
 	            	<div class="col-md5">
-                        <button jsf:id="saveBtn"
-                                 class="btn btn-default"
-                                 jsf:rendered="#{not entity.id eq null}"
-                                 jsf:action="#{bean.save}">
-		                    <i class="fa fa-disk"></i> Salvar
+                        <button
+                                class="btn btn-default"
+                                jsf:id="saveBtn"
+                                jsf:action="#{bean.save}">
+		                    <i class="fa fa-disk"></i>
+                            Salvar
 		                </button>
 
-                        <button jsf:id="updateBtn"
+                        <button
                                 class="btn btn-default"
+                                jsf:id="updateBtn"
                                 jsf:rendered="#{entity.id ne null}"
                                 jsf:action="#{bean.update}">
-                            <i class="fa fa-disk"></i> Atualizar
+                            <i class="fa fa-disk"></i>
+                            Atualizar
                         </button>
 	            	</div>
 	            </div>
+
             </ui:insert>
         </h:form>
 

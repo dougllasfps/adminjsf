@@ -1,10 +1,14 @@
 
+//https://codeseven.github.io/toastr/demo.html
+
 toastr.options = {
     "closeButton": true,
     "debug": false,
     "newestOnTop": false,
     "progressBar": true,
-    "positionClass": "toast-bottom-full-width",
+    "positionClass": "toast-top-right",
+    // "positionClass": "toast-top-full-width",
+    // "positionClass": "toast-bottom-full-width",
     "preventDuplicates": true,
     "onclick": null,
     "showDuration": "300",

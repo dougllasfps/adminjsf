@@ -21,12 +21,18 @@
             <ui:insert name="searchButton">
                 <div class="row">
                     <div class="col-md-3">
-                         <button jsf:id="searchBtn" class="btn btn-default" style="display: inline; padding-right: 5px !important;">
+                         <button jsf:id="searchBtn"
+                                 class="btn btn-default"
+                                 style="display: inline; padding-right: 5px !important;">
                             <i class="fa fa-search"></i> Consultar
-                            <p:ajax process="@form" listener="#{bean.find}" update="resultForm messages" />
+                            <p:ajax process="@form"
+                                    listener="#{bean.find}"
+                                    update="resultForm messages" />
                         </button>
 
-                        <button jsf:id="searchNovo" class="btn btn-default" jsf:action="#{bean.novo}">
+                        <button jsf:id="searchNovo"
+                                class="btn btn-default"
+                                jsf:action="#{bean.novo}">
                             <i class="fa fa-search"></i> Novo
                         </button>
                     </div>
@@ -36,7 +42,12 @@
 
         <h:form id="resultForm" prependId="false">
             <ui:insert name="resultContent" >
-                <p:dataTable var="_item" value="#{bean.result}" rows="10" paginator="true" paginatorPosition="bottom">
+                <p:dataTable var="_item"
+                             value="#{bean.result}"
+                             rows="10"
+                             paginator="true"
+                             paginatorPosition="bottom">
+
                     <p:column>
                         <button jsf:id="btnUpdate"
                                 class="btn btn-sm"

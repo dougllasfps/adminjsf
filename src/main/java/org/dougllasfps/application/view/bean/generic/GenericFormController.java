@@ -7,6 +7,8 @@ import org.dougllasfps.application.view.bean.util.JsfUtil;
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 
+import static org.dougllasfps.application.view.bean.util.JsfUtil.addSuccessToastMessage;
+
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
@@ -46,14 +48,14 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
     public void save() {
         doOnDefaultTryCatch(() -> {
             getService().save(getEntity());
-            JsfUtil.addInfoMessage("Registro salvo com sucesso.");
+            addSuccessToastMessage("Registro salvo com sucesso.");
         });
     }
 
     public void update() {
         doOnDefaultTryCatch(() -> {
             getService().update(getEntity());
-            JsfUtil.addInfoMessage("Registro atualizado com sucesso.");
+            addSuccessToastMessage("Registro atualizado com sucesso.");
         });
     }
 

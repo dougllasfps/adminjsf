@@ -19,11 +19,11 @@ public class PermissaoService extends GenericServiceImpl<Permissao, PermissaoRep
     public void validateSave(Permissao permissao) {
         ValidationException e = new ValidationException();
 
-        if(permissao.getLabel() == null){
+        if( permissao.getLabel() == null ){
             e.addError("Campo label é obrigatório.");
         }
 
-        if(permissao.getDescricao() == null){
+        if( permissao.getDescricao() == null ){
             e.addError("Campo Descrição é obrigatório.");
         }
 
