@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
-import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryCatch;
 
 /**
  * Criado por dougllas.sousa em 10/10/2018.

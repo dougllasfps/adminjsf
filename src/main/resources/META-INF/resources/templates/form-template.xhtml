@@ -9,6 +9,7 @@
     <ui:define name="content">
         <ui:insert name="params">
             <c:set var="bean" value="#{beanName}" />
+            <c:set var="entity" value="#{bean.entity}" />
         </ui:insert>
 		
 		<p:messages id="messages" />
@@ -19,18 +20,19 @@
             <ui:insert name="submitButtons">
 	            <div class="row">
 	            	<div class="col-md5">
-		            	 <button jsf:id="searchBtn" class="btn btn-default">
+                        <button jsf:id="saveBtn"
+                                 class="btn btn-default"
+                                 jsf:rendered="#{not entity.id eq null}"
+                                 jsf:action="#{bean.save}">
 		                    <i class="fa fa-disk"></i> Salvar
 		                </button>
-	            	</div>
-	            	
-	            	<div class="col-md2">
-	            	</div>
-	            	
-	            	<div class="col-md5">
-		            	 <button jsf:id="searchNovo" class="btn btn-default">
-		                    <i class="fa fa-cancel"></i> Cancelar
-		                </button>
+
+                        <button jsf:id="updateBtn"
+                                class="btn btn-default"
+                                jsf:rendered="#{entity.id ne null}"
+                                jsf:action="#{bean.update}">
+                            <i class="fa fa-disk"></i> Atualizar
+                        </button>
 	            	</div>
 	            </div>
             </ui:insert>

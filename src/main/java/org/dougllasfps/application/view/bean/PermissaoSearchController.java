@@ -17,7 +17,6 @@ public class PermissaoSearchController extends GenericSearchController<Permissao
 
 	@Override
 	public String getFormPageLocation() {
-		// TODO Auto-generated method stub
 		return "/pages/controleacesso/permissao/permissao-form";
 	}
 }

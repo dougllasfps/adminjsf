@@ -7,8 +7,6 @@ import org.dougllasfps.application.view.bean.util.JsfUtil;
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 
-import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryCatch;
-
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
@@ -16,8 +14,13 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
 
     private Optional<Long> idEntidade;
 
+    public GenericFormController(){
+        this.idEntidade = Optional.empty();
+    }
+
     @PostConstruct
     public void init(){
+
         String idString = (String) JsfUtil.getFlashParam(ID_PARAM);
 
         Optional.ofNullable(idString).ifPresent( i ->{

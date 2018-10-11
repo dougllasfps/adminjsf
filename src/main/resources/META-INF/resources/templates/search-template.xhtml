@@ -5,7 +5,8 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 xmlns:f="http://xmlns.jcp.org/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <ui:define name="content">
         <ui:insert name="params">
@@ -40,8 +41,9 @@
             <ui:insert name="resultContent" >
                 <p:dataTable var="_item" value="#{bean.result}" rows="10" paginator="true" paginatorPosition="bottom">
                     <p:column>
-                        <button jsf:id="btnUpdate" class="btn btn-sm" jsf:action="#{bean.prepareFormToViewOrUpdate(_item)}">
-                        	<f:param name="id" value="#{_item.id}" />
+                        <button jsf:id="btnUpdate"
+                                class="btn btn-sm"
+                                jsf:action="#{bean.sendToForm(_item)}">
                             <i class="fa fa-pencil"></i>
                         </button>
                     </p:column>
@@ -49,9 +51,11 @@
                     <ui:insert name="resultColumns" />
 
                     <p:column>
-                        <button jsf:id="btnRemove" class="btn btn-sm" >
+                        <button jsf:id="btnRemove"
+                                class="btn btn-sm" >
                             <i class="fa fa-trash"></i>
-                            <p:ajax process="@this" listener="#{bean.prepareDelete(_item)}" />
+                            <p:ajax process="@this"
+                                    listener="#{bean.prepareDelete(_item)}" />
                         </button>
                     </p:column>
                 </p:dataTable>

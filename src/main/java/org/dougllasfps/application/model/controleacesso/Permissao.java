@@ -23,8 +23,7 @@ public class Permissao implements GrantedAuthority, BaseEntity {
     @Column(name = "label")
     private String label;
 
-    public Permissao() {
-    }
+    public Permissao() {}
 
     public Long getId() {
         return this.id;

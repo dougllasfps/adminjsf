@@ -9,59 +9,38 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <title>Application</title>
 
-    <h:outputStylesheet library="css" name="coreui-icons.min.css"/>
-    <h:outputStylesheet library="css" name="flag-icon.min.css"/>
     <h:outputStylesheet library="css" name="font-awesome.min.css"/>
-    <h:outputStylesheet library="css" name="simple-line-icons.css"/>
-
     <h:outputStylesheet library="css" name="style.css"/>
-    <h:outputStylesheet library="vendors" name="pace-progress/css/pace.min.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:outputStylesheet library="css" name="sb-admin-2.css"/>
 
 </h:head>
-<h:body styleClass="app flex-row align-items-center">
+<h:body >
     <h:form prependId="false">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card-group">
-                        <div class="card p-4">
-                            <div class="card-body">
-                                <h1>Login</h1>
-                                <p class="text-muted">Entre com seu Login e Senha</p>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="icon-user"></i>
-                                        </span>
-                                    </div>
-                                    <input class="form-control" type="text" placeholder="Username" name="username"/>
-                                </div>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                          <i class="icon-lock"></i>
-                                        </span>
-                                    </div>
-                                    <input class="form-control" type="password" placeholder="Password" name="password"/>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <button class="btn btn-primary px-4" type="submit">Entrar</button>
-                                    </div>
-                                    <div class="col-6 text-right">
-                                        <button class="btn btn-link px-0" type="button">Esqueçeu a senha?</button>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Login</h3>
                         </div>
-                        <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                            <div class="card-body text-center">
-                                <div>
-                                    <h2>Sign up</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    <button class="btn btn-primary active mt-3" type="button">Cadastrar</button>
-                                </div>
-                            </div>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Usuário" name="username" type="text" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Senha" name="password" type="password"  />
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me"  />Remember Me
+                                        </label>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+
+                                </fieldset>
                         </div>
                     </div>
                 </div>

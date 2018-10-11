@@ -9,14 +9,22 @@
 
     <ui:define name="params">
         <c:set var="bean" value="#{permissaoFormController}" />
+        <c:set var="entity" value="#{permissaoFormController.entity}" />
     </ui:define>
 
     <ui:define name="formContent">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Descrição</label>
-                    <input jsf:id="inputDesc" jsf:value="#{bean.entity.descricao}" class="form-control"/>
+                    <input jsf:id="inputDesc" jsf:value="#{entity.descricao}" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Label</label>
+                    <input jsf:id="inputLabel" jsf:value="#{entity.label}" class="form-control"/>
                 </div>
             </div>
         </div>

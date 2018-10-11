@@ -1,8 +1,7 @@
 package org.dougllasfps.application.view.bean.util;
 
 import com.sun.faces.component.visit.FullVisitContext;
-import org.dougllasfps.application.exception.ApplicationException;
-import org.dougllasfps.application.exception.ValidationException;
+import org.primefaces.context.RequestContext;
 
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
@@ -25,6 +24,9 @@ import java.io.Serializable;
  */
 public class JsfUtil implements Serializable {
 
+    public static void addWarnToastMessage(String message){
+        RequestContext.getCurrentInstance().execute( ToastMessage.warn("Alerta", message ).getScript() );
+    }
 
     public static void addInfoMessage(String msg) {
         addInfoMessage(null, msg);
@@ -135,18 +137,6 @@ public class JsfUtil implements Serializable {
         return found[0];
     }
 
-    public static void doOnDefaultTryCatch(Action action){
-        try {
-            action.execute();
-        } catch (ValidationException e) {
-            e.getErrors().forEach( err -> addErrorMessage(err.getMessage()) );
-        } catch (ApplicationException e) {
-            addErrorMessage(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void addFlashParam(String param, String value){
     	getExternalContext().getFlash().put(param, value);
     }
@@ -167,8 +157,4 @@ public class JsfUtil implements Serializable {
         return getExternalContext().getRequestParameterMap().put(param,value);
     }
 
-    @FunctionalInterface
-    public interface Action{
-        void execute();
-    }
 }

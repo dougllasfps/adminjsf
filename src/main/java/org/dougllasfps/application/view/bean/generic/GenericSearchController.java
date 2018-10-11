@@ -2,14 +2,11 @@ package org.dougllasfps.application.view.bean.generic;
 
 import org.dougllasfps.application.model.BaseEntity;
 import org.dougllasfps.application.service.generic.GenericService;
-import org.dougllasfps.application.view.bean.util.JsfUtil;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-import static org.dougllasfps.application.view.bean.util.JsfUtil.addInfoMessage;
-import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
-import static org.dougllasfps.application.view.bean.util.JsfUtil.doOnDefaultTryCatch;
+import static org.dougllasfps.application.view.bean.util.JsfUtil.*;
 
 /**
  * Criado por dougllas.sousa em 10/10/2018.
@@ -31,7 +28,7 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
             validateSearch();
             this.result = getService().find(getEntity());
             if(getResult().isEmpty()){
-                addWarnMessage("Nenhum registro encontrado.");
+                addWarnToastMessage("Nenhum registro encontrado.");
             }
         });
     }
@@ -51,8 +48,8 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
         this.result = result;
     }
 
-    public String prepareFormToViewOrUpdate(T entity){
-    	JsfUtil.addFlashParam("id", entity.getId().toString());
+    public String sendToForm(T entity){
+    	addFlashParam("id", entity.getId().toString());
         return getFormPageLocation();
     }
 

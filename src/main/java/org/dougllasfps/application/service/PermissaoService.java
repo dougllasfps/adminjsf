@@ -23,6 +23,10 @@ public class PermissaoService extends GenericServiceImpl<Permissao, PermissaoRep
             e.addError("Campo label é obrigatório.");
         }
 
+        if(permissao.getDescricao() == null){
+            e.addError("Campo Descrição é obrigatório.");
+        }
+
         e.dispatch();
     }
 }
