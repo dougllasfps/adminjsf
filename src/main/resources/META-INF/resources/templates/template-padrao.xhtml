@@ -7,47 +7,75 @@
       xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces">
 
   <h:head>
-    <title>CoreUI Free Bootstrap Admin Template</title>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+
+      <title>Aplicaçao</title>
+
+      <h:outputStylesheet library="css" name="bootstrap.min.css" />
+
+      <h:outputStylesheet library="css" name="metisMenu.min.css"/>
+
+      <h:outputStylesheet library="css" name="sb-admin-2.css"/>
+
+      <h:outputStylesheet library="css" name="morris.css"/>
 
       <h:outputStylesheet library="css" name="font-awesome.min.css"/>
 
-      <h:outputStylesheet library="css" name="style.css" />
-      <h:outputStylesheet library="css" name="bootstrap.min.css" />
       <h:outputStylesheet library="css" name="toastr.min.css" />
-      <h:outputStylesheet library="css" name="sb-admin-2.css"/>
 
+      <h:outputStylesheet library="css" name="style.css" />
+
+      <h:outputScript library="js" name="html5shiv.js" />
+
+      <h:outputScript library="js" name="respond.min.js" />
   </h:head>
   <h:body>
 
-    <ui:insert name="header">
-        <ui:include src="fragments/header.xhtml" />
-    </ui:insert>
+      <div id="wrapper">
 
-    <div class="app-body">
+          <!-- Navigation -->
+          <ui:include src="fragments/navbar.xhtml" />
 
-        <ui:insert name="sidebar">
-            <ui:include src="fragments/side-bar.xhtml" />
-        </ui:insert>
+          <div id="page-wrapper">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <h1 class="page-header">
+                          <ui:insert name="pageHeader">
+                              Header
+                          </ui:insert>
+                      </h1>
+                  </div>
+                  <!-- /.col-lg-12 -->
+              </div>
 
-      <main class="main">
-        <div class="container-fluid">
-          <div class="animated fadeIn">
               <ui:insert name="content" />
-          </div>
-        </div>
-      </main>
 
-    </div>
-    <ui:insert name="footer">
-        <ui:include src="fragments/footer.xhtml" />
-    </ui:insert>
-    <!-- CoreUI and necessary plugins-->
+          </div>
+          <!-- /#page-wrapper -->
+
+      </div>
+
 
     <h:outputScript library="js" name="jquery.min.js" />
-    <h:outputScript library="js" name="bootstrap.min.js" />
-    <h:outputScript library="js" name="sb-admin-2.js" />
-    <h:outputScript library="js" name="toastr.min.js" />
-    <h:outputScript library="js" name="scripts.js" />
 
+    <h:outputScript library="js" name="bootstrap.min.js" />
+
+    <h:outputScript library="js" name="metisMenu.min.js" />
+
+    <h:outputScript library="js" name="raphael.min.js" />
+
+    <h:outputScript library="js" name="morris.min.js" />
+
+    <h:outputScript library="js" name="morris-data.js" />
+
+    <h:outputScript library="js" name="sb-admin-2.js" />
+
+    <h:outputScript library="js" name="toastr.min.js" />
+
+    <h:outputScript library="js" name="scripts.js" />
   </h:body>
 </html>

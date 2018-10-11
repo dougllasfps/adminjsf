@@ -19,21 +19,18 @@
         
             <ui:insert name="formContent" />
             <ui:insert name="searchButton">
-            <div class="row">
-            	<div class="col-md2">
-	            	 <button jsf:id="searchBtn" class="btn btn-default">
-	                    <i class="fa fa-search"></i> Consultar
-	                    <p:ajax process="@form" listener="#{bean.find}" update="resultForm messages" />
-	                </button>
-            	</div>
-            	
-            	<div class="col-md2">
-	            	 <button jsf:id="searchNovo" class="btn btn-default" jsf:action="#{bean.novo}">
-	                    <i class="fa fa-search"></i> Novo
-	                </button>
-            	</div>
-            </div>
-               
+                <div class="row">
+                    <div class="col-md-3">
+                         <button jsf:id="searchBtn" class="btn btn-default" style="display: inline; padding-right: 5px !important;">
+                            <i class="fa fa-search"></i> Consultar
+                            <p:ajax process="@form" listener="#{bean.find}" update="resultForm messages" />
+                        </button>
+
+                        <button jsf:id="searchNovo" class="btn btn-default" jsf:action="#{bean.novo}">
+                            <i class="fa fa-search"></i> Novo
+                        </button>
+                    </div>
+                </div>
             </ui:insert>
         </h:form>
 
