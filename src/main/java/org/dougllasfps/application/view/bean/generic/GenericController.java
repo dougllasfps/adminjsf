@@ -7,7 +7,7 @@ import org.dougllasfps.application.view.bean.Action;
 
 import javax.inject.Inject;
 
-import static org.dougllasfps.application.view.bean.util.JsfUtil.addErrorMessage;
+import static org.dougllasfps.application.view.bean.util.JsfUtil.addErrorToastMessage;
 
 /**
  * Criado por dougllas.sousa em 10/10/2018.
@@ -38,11 +38,12 @@ public abstract class GenericController<T, SERVICE extends GenericService> {
         try {
             action.execute();
         } catch (ValidationException e) {
-            e.getErrors().forEach( err -> addErrorMessage(err.getMessage()) );
+            e.getErrors().forEach( err -> addErrorToastMessage(err.getMessage()) );
         } catch (ApplicationException e) {
-            addErrorMessage(e.getMessage());
+            addErrorToastMessage(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            addErrorToastMessage("Ocorreu um erro inesperado. Caso o erro persista, entre em contato com a Administração.");
         }
     }
 }

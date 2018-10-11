@@ -17,6 +17,7 @@ public class PermissaoService extends GenericServiceImpl<Permissao, PermissaoRep
 
     @Override
     public void validateSave(Permissao permissao) {
+
         ValidationException e = new ValidationException();
 
         if( permissao.getLabel() == null ){
@@ -28,5 +29,6 @@ public class PermissaoService extends GenericServiceImpl<Permissao, PermissaoRep
         }
 
         e.dispatch();
+
     }
 }
