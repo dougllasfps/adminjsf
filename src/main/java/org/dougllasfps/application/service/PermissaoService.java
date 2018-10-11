@@ -28,7 +28,7 @@ public class PermissaoService extends GenericServiceImpl<Permissao, PermissaoRep
             e.addError("Campo Descrição é obrigatório.");
         }
 
-        e.dispatch();
+        e.throwIfHasErrors();
 
     }
 }

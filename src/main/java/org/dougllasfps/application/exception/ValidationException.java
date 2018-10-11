@@ -44,7 +44,7 @@ public class ValidationException extends RuntimeException {
         return !CollectionUtils.isEmpty(this.errors);
     }
 
-    public void dispatch(){
+    public void throwIfHasErrors(){
         if(hasErrors()){
             throw this;
         }
