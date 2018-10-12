@@ -17,6 +17,11 @@
 		<p:messages id="messages" />
 
         <h:form id="form" prependId="false">
+            <style>
+                .mainButton{
+                    margin-right: 10px;
+                }
+            </style>
         
             <ui:insert name="formContent" />
             <ui:insert name="submitButtons">
@@ -25,20 +30,30 @@
 	            	<div class="col-md5">
 
                         <button
-                                class="btn btn-default"
+                                class="btn btn-default mainButton"
                                 jsf:id="saveBtn"
+                                jsf:rendered="#{entity.id eq null}"
                                 jsf:action="#{bean.save}">
-		                    <i class="fa fa-disk"></i>
+		                    <i class="fa fa-check"></i>
                             Salvar
 		                </button>
 
                         <button
-                                class="btn btn-default"
+                                class="btn btn-default mainButton"
                                 jsf:id="updateBtn"
                                 jsf:rendered="#{entity.id ne null}"
                                 jsf:action="#{bean.update}">
-                            <i class="fa fa-disk"></i>
+                            <i class="fa fa-check"></i>
                             Atualizar
+                        </button>
+
+
+                        <button
+                                class="btn btn-danger"
+                                jsf:id="backBtn"
+                                jsf:outcome="#{bean.searchFormLocation}">
+                            <i class="fa fa-times"></i>
+                            Cancelar
                         </button>
 
 	            	</div>

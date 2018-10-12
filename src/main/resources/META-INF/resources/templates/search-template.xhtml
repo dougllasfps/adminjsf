@@ -6,51 +6,65 @@
                 xmlns:f="http://xmlns.jcp.org/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:app="http://xmlns.jcp.org/jsf/composite/components/app">
 
     <ui:define name="content">
         <ui:insert name="params">
             <c:set var="bean" value="#{beanName}" />
         </ui:insert>
 		
-		<p:messages id="messages" />
-
         <h:form id="form" prependId="false">
+
+            <style>
+                .mainButton{
+                    margin-right: 10px;
+                }
+            </style>
         
             <ui:insert name="formContent" />
             <ui:insert name="searchButton">
                 <div class="row">
                     <div class="col-md-3">
                          <button jsf:id="searchBtn"
-                                 class="btn btn-default"
+                                 class="btn btn-default mainButton"
                                  style="display: inline; padding-right: 5px !important;">
                             <i class="fa fa-search"></i> Consultar
                             <p:ajax process="@form"
                                     listener="#{bean.find}"
-                                    update="resultForm messages" />
+                                    update="resultForm" />
                         </button>
 
                         <button jsf:id="searchNovo"
-                                class="btn btn-default"
+                                class="btn btn-primary"
                                 jsf:action="#{bean.novo}">
-                            <i class="fa fa-search"></i> Novo
+                            <i class="fa fa-plus"></i> Novo
                         </button>
                     </div>
                 </div>
             </ui:insert>
         </h:form>
 
+        <br />
+
         <h:form id="resultForm" prependId="false">
+            <style>
+                .centerColumn{
+                    text-align: center;
+                }
+            </style>
             <ui:insert name="resultContent" >
-                <p:dataTable var="_item"
+                <p:dataTable id="resultTable"
+                             var="_item"
+                             reflow="true"
                              value="#{bean.result}"
                              rows="10"
                              paginator="true"
                              paginatorPosition="bottom">
 
-                    <p:column>
+                    <p:column width="55" styleClass="centerColumn">
                         <button jsf:id="btnUpdate"
-                                class="btn btn-sm"
+                                class="btn btn-sm btn-primary"
                                 jsf:action="#{bean.sendToForm(_item)}">
                             <i class="fa fa-pencil"></i>
                         </button>
@@ -58,12 +72,11 @@
 
                     <ui:insert name="resultColumns" />
 
-                    <p:column>
+                    <p:column width="55"  styleClass="centerColumn">
                         <button jsf:id="btnRemove"
-                                class="btn btn-sm" >
+                                class="btn btn-sm btn-danger" >
                             <i class="fa fa-trash"></i>
-                            <p:ajax process="@this"
-                                    listener="#{bean.prepareDelete(_item)}" />
+                            <p:ajax process="@this" listener="#{bean.prepareDelete(_item)}" oncomplete="showConfirmDialog();" />
                         </button>
                     </p:column>
                 </p:dataTable>
@@ -71,6 +84,10 @@
         </h:form>
 
 
+    </ui:define>
+
+    <ui:define name="afterContent">
+        <app:confirm confirmAction="#{bean.delete()}" message="Confirma a exclusão do registro?" update="resultTable"/>
     </ui:define>
 
 </ui:composition>

@@ -11,4 +11,8 @@ import org.dougllasfps.application.view.bean.generic.GenericFormController;
 @ViewScoped
 public class PermissaoFormController extends GenericFormController<Permissao,PermissaoService> {
 
+    @Override
+    public String getSearchFormLocation() {
+        return "/pages/controleacesso/permissao/permissao-search";
+    }
 }

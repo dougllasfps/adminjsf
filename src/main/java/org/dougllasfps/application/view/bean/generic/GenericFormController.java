@@ -45,18 +45,20 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
 
     public void prepareInsert(){}
 
-    public void save() {
+    public String save() {
         doOnDefaultTryCatch(() -> {
             getService().save(getEntity());
             addSuccessToastMessage("Registro salvo com sucesso.");
         });
+        return getSearchFormLocation();
     }
 
-    public void update() {
+    public String update() {
         doOnDefaultTryCatch(() -> {
             getService().update(getEntity());
             addSuccessToastMessage("Registro atualizado com sucesso.");
         });
+        return getSearchFormLocation();
     }
 
     public Optional<Long> getIdEntidade() {
@@ -65,5 +67,9 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
 
     public void setIdEntidade(Optional<Long> idEntidade) {
         this.idEntidade = idEntidade;
+    }
+
+    public String getSearchFormLocation(){
+        return "";
     }
 }

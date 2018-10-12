@@ -36,7 +36,8 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
     public void delete(){
         doOnDefaultTryCatch( ()->{
             getService().delete(getEntity());
-            addInfoMessage("Registro removido com sucesso.");
+            addSuccessToastMessage("Registro removido com sucesso.");
+            getResult().remove(getEntity());
         });
     }
 

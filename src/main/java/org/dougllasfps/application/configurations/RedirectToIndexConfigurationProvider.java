@@ -20,7 +20,7 @@ public class RedirectToIndexConfigurationProvider extends HttpConfigurationProvi
         return ConfigurationBuilder.begin()
                 .addRule()
                 .when(Direction.isInbound().and(Path.matches("/")))
-                .perform(Redirect.temporary("/jsfapp/login.xhtml"));
+                .perform(Redirect.temporary("/login.xhtml"));
     }
 
     @Override

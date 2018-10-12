@@ -27,7 +27,11 @@
     </ui:define>
 
     <ui:define name="resultColumns">
-        <p:column headerText="Descrição">
+        <p:column headerText="label" width="300">
+            <h:outputText value="#{_item.label}"  />
+        </p:column>
+
+        <p:column headerText="Descrição" >
             <h:outputText value="#{_item.descricao}" />
         </p:column>
     </ui:define>
