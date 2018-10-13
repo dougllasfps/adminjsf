@@ -20,6 +20,9 @@ public class LazyDataTable<T> {
         Objects.requireNonNull(model);
         this.demandPaginationService = demandPaginationService;
         this.model = model;
+        this.rows = 10;
+        this.rowCount = 0l;
+        this.actualPage = 0;
     }
 
     public List<T> getContent() {

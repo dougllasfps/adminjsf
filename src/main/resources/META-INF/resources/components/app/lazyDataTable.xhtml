@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <ui:composition
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:comp="http://xmlns.jcp.org/jsf/composite"
-      xmlns:p="http://primefaces.org/ui">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:comp="http://xmlns.jcp.org/jsf/composite"
+        xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <comp:interface>
         <comp:facet name="header" />
         <comp:facet name="content" />
-        <comp:attribute name="value" type=" org.dougllasfps.application.view.bean.component.LazyDataTable" required="true" />
+        <comp:attribute name="value" type="org.dougllasfps.application.view.bean.component.LazyDataTable" required="true" />
         <comp:attribute name="var" required="true" />
+        <comp:attribute name="tableStyleClass" required="false" />
+        <comp:attribute name="theadStyleClass" required="false" />
+        <comp:attribute name="tbodyStyleClass" required="false" />
+        <comp:attribute name="columnStyleClass" required="false" />
     </comp:interface>
 
     <comp:implementation>
-        <table class="table table-bordered table-striped table-condensed">
-            <thead>
+        <table class="table table-bordered table-striped table-condensed #{cc.attrs.tableStyleClass}">
+            <thead id="#{cc.id}_thead" class="#{cc.attrs.theadStyleClass}">
                 <comp:insertFacet name="header" />
             </thead>
-            <tbody>
+            <tbody  id="#{cc.id}_tbody" class="#{cc.attrs.tbodyStyleClass}">
                 <ui:repeat value="#{cc.attrs.value}" var="#{cc.attrs.var}">
-                    <tr>
+                    <tr class="#{cc.attrs.columnStyleClass}">
                         <comp:insertFacet name="content" />
                     </tr>
                 </ui:repeat>
             </tbody>
         </table>
 
-        <nav aria-label="Page navigation example" jsf:id="tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
+        <nav aria-label="Page navigation example" jsf:id="#{cc.id}_tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
             <ul class="pagination justify-content-right">
 
                 <li class="page-item #{empty cc.attrs.value.isEmpty() ? 'disabled' : ''}">
@@ -55,7 +59,7 @@
                     </a>
                 </li>
 
-                <ui:repeat value="#{cc.attrs.value.pagesRange}" var="page">
+                <c:forEach items="#{cc.attrs.value.pagesRange}" var="page">
                     <li class="page-item #{cc.attrs.value.isCurrentPage(page) ? 'active' : ''}">
                         <a class="page-link"
                            jsfc="h:commandLink"
@@ -64,7 +68,7 @@
                             <p:ajax process="@this" update="#{cc.id}" />
                         </a>
                     </li>
-                </ui:repeat>
+                </c:forEach>
 
                 <li class="page-item #{cc.attrs.value.hasNext() ? '' : 'disabled'}">
                     <a class="page-link"

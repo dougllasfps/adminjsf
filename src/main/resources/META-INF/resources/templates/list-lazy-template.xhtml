@@ -58,7 +58,7 @@
                              styleClass="table table-striped table-condensed table-bordered"
                              var="_item"
                              reflow="true"
-                             value="#{bean.result}"
+                             value="#{bean.dataTable.content}"
                              rows="10"
                              paginator="true"
                              paginatorPosition="bottom">
@@ -84,58 +84,57 @@
                     </h:column>
 
                 </h:dataTable>
-
                 <nav aria-label="Page navigation example" jsf:id="tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
                     <ul class="pagination justify-content-right">
 
-                        <li class="page-item #{empty bean.result ? 'disabled' : ''}">
+                        <li class="page-item #{empty bean.dataTable.isEmpty() ? 'disabled' : ''}">
                             <a class="page-link"
                                jsfc="h:commandLink"
-                               actionListener="#{bean.first()}">
+                               actionListener="#{bean.dataTable.first()}">
                                 &lt;&lt;
                                 <p:ajax process="@this" update="resultTable tablePaginator" />
                             </a>
                         </li>
 
-                        <li class="page-item #{bean.hasPrevious() ? '' : 'disabled'}">
+                        <li class="page-item #{bean.dataTable.hasPrevious() ? '' : 'disabled'}">
                             <a class="page-link "
                                jsfc="h:commandLink"
-                               actionListener="#{bean.back()}">
+                               actionListener="#{bean.dataTable.back()}">
                                 &lt;
                                 <p:ajax process="@this" update="resultTable tablePaginator" />
                             </a>
                         </li>
 
-                        <li class="page-item disabled" jsf:rendered="#{empty bean.pagesRange}">
+                        <li class="page-item disabled" jsf:rendered="#{empty bean.dataTable.pagesRange}">
                             <a class="page-link ">
                                 0
                             </a>
                         </li>
 
-                        <ui:repeat value="#{bean.pagesRange}" var="page">
-                            <li class="page-item #{bean.isCurrentPage(page) ? 'active' : ''}">
+                        <ui:repeat value="#{bean.dataTable.pagesRange}" var="page">
+                            <li class="page-item #{bean.dataTable.isCurrentPage(page) ? 'active' : ''}">
                                 <a class="page-link"
                                    jsfc="h:commandLink"
-                                   actionListener="#{bean.goToPage(page)}">
+                                   actionListener="#{bean.dataTable.goToPage(page)}">
                                     #{page}
                                     <p:ajax process="@this" update="resultTable tablePaginator" />
                                 </a>
                             </li>
                         </ui:repeat>
 
-                        <li class="page-item #{bean.hasNext() ? '' : 'disabled'}">
+                        <li class="page-item #{bean.dataTable.hasNext() ? '' : 'disabled'}">
                             <a class="page-link"
                                jsfc="h:commandLink"
-                               actionListener="#{bean.foward()}">
+                               actionListener="#{bean.dataTable.foward()}">
                                 &gt;
                                 <p:ajax process="@this" update="resultTable tablePaginator" />
                             </a>
                         </li>
 
-                        <li class="page-item #{empty bean.result ? 'disabled' : ''}">
+                        <li class="page-item #{empty bean.dataTable.isEmpty() ? 'disabled' : ''}">
                             <a class="page-link"
                                jsfc="h:commandLink"
-                               actionListener="#{bean.last()}">
+                               actionListener="#{bebean.dataTablean.last()}">
                                 &gt;&gt;
                                 <p:ajax process="@this" update="resultTable tablePaginator" />
                             </a>
