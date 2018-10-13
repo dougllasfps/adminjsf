@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface DemandPaginationService<T> {
     List<T> load( int offset, int limit, Sort sortOptions , T filtro);
+
+    Long count(T filtro);
 }

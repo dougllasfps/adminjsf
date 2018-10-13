@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class GenericLazySearchControllerTest {
 
-    GenericLazySearchController bean;
+    AbstractLazyListBean bean;
 
     @Before
     public void setup(){
-        bean = new GenericLazySearchController();
+        bean = new AbstractLazyListBean(){};
     }
 
     @Test
@@ -32,6 +32,4 @@ public class GenericLazySearchControllerTest {
         List<Integer> pagesRange = bean.getPagesRange();
         Assert.assertEquals(pagesRange, Arrays.asList(1));
     }
-
-
 }

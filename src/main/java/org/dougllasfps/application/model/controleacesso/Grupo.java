@@ -1,5 +1,7 @@
 package org.dougllasfps.application.model.controleacesso;
 
+import org.dougllasfps.application.model.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "grupo", schema = "controle_acesso")
-public class Grupo implements Serializable {
+public class Grupo implements Serializable, BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

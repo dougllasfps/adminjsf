@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
-public interface GenericService<T extends BaseEntity>  extends DemandPaginationService<T> {
+public interface AbstractService<T extends BaseEntity>  extends DemandPaginationService<T> {
 
     void beforeSave(T entidade);
     void validateSave(T entidade);
@@ -31,7 +31,6 @@ public interface GenericService<T extends BaseEntity>  extends DemandPaginationS
     List<T> find(T filtro);
     List<T> findAll();
     Long count();
-    Long count(T filtro);
     boolean exists(Long id);
     boolean exists(T filtro);
     T prepareEntityData(Long id);

@@ -1,7 +1,7 @@
 package org.dougllasfps.application.view.bean.generic;
 
 import org.dougllasfps.application.model.BaseEntity;
-import org.dougllasfps.application.service.generic.GenericService;
+import org.dougllasfps.application.service.generic.AbstractService;
 import org.dougllasfps.application.view.bean.util.JsfUtil;
 
 import javax.annotation.PostConstruct;
@@ -12,11 +12,11 @@ import static org.dougllasfps.application.view.bean.util.JsfUtil.addSuccessToast
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
-public abstract class GenericFormController<T extends BaseEntity, SERVICE extends GenericService<T>> extends GenericController<T, SERVICE> {
+public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends AbstractService<T>> extends AbstractBean<T, SERVICE> {
 
     private Optional<Long> idEntidade;
 
-    public GenericFormController(){
+    public AbstractFormBean(){
         this.idEntidade = Optional.empty();
     }
 
@@ -46,19 +46,17 @@ public abstract class GenericFormController<T extends BaseEntity, SERVICE extend
     public void prepareInsert(){}
 
     public String save() {
-        doOnDefaultTryCatch(() -> {
+        return doOnDefaultTryCatch(() -> {
             getService().save(getEntity());
             addSuccessToastMessage("Registro salvo com sucesso.");
-        });
-        return getSearchFormLocation();
+        }, () -> getSearchFormLocation());
     }
 
     public String update() {
-        doOnDefaultTryCatch(() -> {
+        return doOnDefaultTryCatch(() -> {
             getService().update(getEntity());
             addSuccessToastMessage("Registro atualizado com sucesso.");
-        });
-        return getSearchFormLocation();
+        }, () -> getSearchFormLocation());
     }
 
     public Optional<Long> getIdEntidade() {

@@ -1,8 +1,8 @@
-package org.dougllasfps.application.view.bean;
+package org.dougllasfps.application.view.bean.controleacesso.permissao;
 
 import org.dougllasfps.application.model.controleacesso.Permissao;
 import org.dougllasfps.application.service.PermissaoService;
-import org.dougllasfps.application.view.bean.generic.GenericSearchController;
+import org.dougllasfps.application.view.bean.generic.AbstractLazyListBean;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -13,7 +13,7 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class PermissaoSearchController extends GenericSearchController<Permissao, PermissaoService>{
+public class PermissaoList extends AbstractLazyListBean<Permissao, PermissaoService> {
 
 	@Override
 	public String getFormPageLocation() {

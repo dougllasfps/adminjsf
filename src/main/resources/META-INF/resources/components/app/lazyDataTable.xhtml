@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:comp="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <comp:interface>
+        <comp:facet name="header" />
+        <comp:facet name="content" />
+        <comp:attribute name="value" type=" org.dougllasfps.application.view.bean.component.LazyDataTable" required="true" />
+        <comp:attribute name="var" required="true" />
+    </comp:interface>
+
+    <comp:implementation>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <comp:insertFacet name="header" />
+            </thead>
+            <tbody>
+                <ui:repeat value="#{cc.attrs.value}" var="#{cc.attrs.var}">
+                    <tr>
+                        <comp:insertFacet name="content" />
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example" jsf:id="tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
+            <ul class="pagination justify-content-right">
+
+                <li class="page-item #{empty cc.attrs.value.isEmpty() ? 'disabled' : ''}">
+                    <a class="page-link"
+                       jsfc="h:commandLink"
+                       actionListener="#{cc.attrs.value.first()}">
+                        &lt;&lt;
+                        <p:ajax process="@this" update="resultTable tablePaginator" />
+                    </a>
+                </li>
+
+                <li class="page-item #{cc.attrs.value.hasPrevious() ? '' : 'disabled'}">
+                    <a class="page-link "
+                       jsfc="h:commandLink"
+                       actionListener="#{cc.attrs.value.back()}">
+                        &lt;
+                        <p:ajax process="@this" update="#{cc.id}" />
+                    </a>
+                </li>
+
+                <li class="page-item disabled" jsf:rendered="#{empty cc.attrs.value.pagesRange}">
+                    <a class="page-link ">
+                        0
+                    </a>
+                </li>
+
+                <ui:repeat value="#{cc.attrs.value.pagesRange}" var="page">
+                    <li class="page-item #{cc.attrs.value.isCurrentPage(page) ? 'active' : ''}">
+                        <a class="page-link"
+                           jsfc="h:commandLink"
+                           actionListener="#{cc.attrs.value.goToPage(page)}">
+                            #{page}
+                            <p:ajax process="@this" update="#{cc.id}" />
+                        </a>
+                    </li>
+                </ui:repeat>
+
+                <li class="page-item #{cc.attrs.value.hasNext() ? '' : 'disabled'}">
+                    <a class="page-link"
+                       jsfc="h:commandLink"
+                       actionListener="#{cc.attrs.value.foward()}">
+                        &gt;
+                        <p:ajax process="@this" update="#{cc.id}" />
+                    </a>
+                </li>
+
+                <li class="page-item #{empty cc.attrs.value.result ? 'disabled' : ''}">
+                    <a class="page-link"
+                       jsfc="h:commandLink"
+                       actionListener="#{cc.attrs.value.last()}">
+                        &gt;&gt;
+                        <p:ajax process="@this" update="#{cc.id}" />
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </comp:implementation>
+
+</ui:composition>

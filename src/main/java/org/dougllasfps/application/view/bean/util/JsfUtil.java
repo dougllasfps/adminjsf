@@ -29,15 +29,15 @@ public class JsfUtil implements Serializable {
     }
 
     public static void addSuccessToastMessage(String message){
-        RequestContext.getCurrentInstance().execute( ToastMessage.success("Alerta", message ).getScript() );
+        RequestContext.getCurrentInstance().execute( ToastMessage.success("Sucesso", message ).getScript() );
     }
 
     public static void addErrorToastMessage(String message){
-        RequestContext.getCurrentInstance().execute( ToastMessage.error("Alerta", message ).getScript() );
+        RequestContext.getCurrentInstance().execute( ToastMessage.error("Erro", message ).getScript() );
     }
 
     public static void addInfoToastMessage(String message){
-        RequestContext.getCurrentInstance().execute( ToastMessage.info("Alerta", message ).getScript() );
+        RequestContext.getCurrentInstance().execute( ToastMessage.info("Informação", message ).getScript() );
     }
 
     public static void addInfoMessage(String msg) {

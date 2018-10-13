@@ -1,15 +1,15 @@
-package org.dougllasfps.application.view.bean;
+package org.dougllasfps.application.view.bean.controleacesso.permissao;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.dougllasfps.application.model.controleacesso.Permissao;
 import org.dougllasfps.application.service.PermissaoService;
-import org.dougllasfps.application.view.bean.generic.GenericFormController;
+import org.dougllasfps.application.view.bean.generic.AbstractFormBean;
 
 @Named
 @ViewScoped
-public class PermissaoFormController extends GenericFormController<Permissao,PermissaoService> {
+public class PermissaoForm extends AbstractFormBean<Permissao,PermissaoService> {
 
     @Override
     public String getSearchFormLocation() {

@@ -3,8 +3,7 @@ package org.dougllasfps.application.service.generic.impl;
 import org.dougllasfps.application.model.BaseEntity;
 import org.dougllasfps.application.repository.FullRepository;
 import org.dougllasfps.application.service.generic.DemandPaginationService;
-import org.dougllasfps.application.service.generic.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.dougllasfps.application.service.generic.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +22,7 @@ import java.util.Optional;
  */
 
 @Service
-public abstract class GenericServiceImpl<T extends BaseEntity, REPOSITORY extends FullRepository<T>> implements GenericService<T>, DemandPaginationService<T> {
+public abstract class AbstractServiceImpl<T extends BaseEntity, REPOSITORY extends FullRepository<T>> implements AbstractService<T>, DemandPaginationService<T> {
 
     @Inject
     private REPOSITORY repository;
@@ -208,7 +207,7 @@ public abstract class GenericServiceImpl<T extends BaseEntity, REPOSITORY extend
     @Override
     public List<T> load( int offset, int limit, Sort sortOptions, T filtro) {
         Example<T> example = getDefaultExample(filtro);
-        PageRequest pageRequest = PageRequest.of(offset, limit, sortOptions);
+        PageRequest pageRequest = sortOptions == null ? PageRequest.of(offset, limit) : PageRequest.of(offset, limit, sortOptions);
         return repository.findAll( example, pageRequest ).getContent();
     }
 }

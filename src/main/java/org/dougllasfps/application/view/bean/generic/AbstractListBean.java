@@ -1,7 +1,7 @@
 package org.dougllasfps.application.view.bean.generic;
 
 import org.dougllasfps.application.model.BaseEntity;
-import org.dougllasfps.application.service.generic.GenericService;
+import org.dougllasfps.application.service.generic.AbstractService;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -11,7 +11,7 @@ import static org.dougllasfps.application.view.bean.util.JsfUtil.*;
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
-public class GenericSearchController<T extends BaseEntity, S extends GenericService<T>> extends GenericController<T, S> {
+public abstract class AbstractListBean<T extends BaseEntity, S extends AbstractService<T>> extends AbstractBean<T, S> {
 
     protected List<T> result;
 
@@ -38,6 +38,7 @@ public class GenericSearchController<T extends BaseEntity, S extends GenericServ
             getService().delete(getEntity());
             addSuccessToastMessage("Registro removido com sucesso.");
             getResult().remove(getEntity());
+            setEntity(getService().createInstanceOfEntityClass());
         });
     }
 

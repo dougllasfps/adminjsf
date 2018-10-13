@@ -1,7 +1,7 @@
 package org.dougllasfps.application.view.bean.generic;
 
 import org.dougllasfps.application.model.BaseEntity;
-import org.dougllasfps.application.service.generic.GenericService;
+import org.dougllasfps.application.service.generic.AbstractService;
 
 import javax.annotation.PostConstruct;
 
@@ -13,13 +13,13 @@ import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
-public class GenericLazySearchController<T extends BaseEntity,S extends GenericService<T>> extends GenericSearchController<T, S> {
+public abstract class AbstractLazyListBean<T extends BaseEntity,S extends AbstractService<T>> extends AbstractListBean<T, S> {
 
     private Long rowCount;
     private Integer rows;
     private Integer actualPage;
 
-    public GenericLazySearchController(){
+    public AbstractLazyListBean(){
         setActualPage(0);
         setRows(10);
         setRowCount(0l);
@@ -36,11 +36,16 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
             validateSearch();
             Long count = getService().count(getEntity());
             setRowCount(count);
+            setActualPage(0);
             loadActualPage();
             if(getResult().isEmpty()){
                 addWarnMessage("Nenhum registro encontrado.");
             }
         });
+    }
+
+    public boolean isCurrentPage(Integer pageNumber){
+        return pageNumber != null && pageNumber.equals(getActualPage() + 1);
     }
 
     public void goToPage(Integer pageNumber){
@@ -57,7 +62,7 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
     }
 
     public void foward(){
-        goToPage(getActualPage()+1);
+        goToPage(getActualPage()+2);
     }
 
     private void loadActualPage() {
@@ -65,7 +70,7 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
     }
 
     public void back(){
-        goToPage(getActualPage() - 1);
+        goToPage(getActualPage());
     }
 
     public Integer getRows() {
@@ -109,5 +114,13 @@ public class GenericLazySearchController<T extends BaseEntity,S extends GenericS
             values.add(x);
         }
         return values;
+    }
+
+    public boolean hasPrevious(){
+        return getActualPage() > 0;
+    }
+
+    public boolean hasNext(){
+        return getActualPage() < getTotalPages() - 1;
     }
 }

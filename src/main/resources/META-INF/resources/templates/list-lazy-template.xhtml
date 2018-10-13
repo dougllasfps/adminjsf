@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:decorate template="list-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:app="http://xmlns.jcp.org/jsf/composite/components/app">
+
+    <ui:define name="content">
+        <ui:insert name="resultContent" >
+
+                <h:dataTable id="resultTable"
+                             styleClass="table table-striped table-condensed table-bordered"
+                             var="_item"
+                             reflow="true"
+                             value="#{bean.result}"
+                             rows="10"
+                             paginator="true"
+                             paginatorPosition="bottom">
+
+                    <h:column styleClass="centerColumn">
+                        <f:facet name="header"></f:facet>
+                        <button jsf:id="btnUpdate"
+                                class="btn btn-sm btn-primary"
+                                jsf:action="#{bean.sendToForm(_item)}">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </h:column>
+
+                    <ui:insert name="resultColumns" />
+
+                    <h:column styleClass="centerColumn">
+                        <f:facet name="header"></f:facet>
+                        <button jsf:id="btnRemove"
+                                class="btn btn-sm btn-danger" >
+                            <i class="fa fa-trash"></i>
+                            <p:ajax process="@this" listener="#{bean.prepareDelete(_item)}" oncomplete="showConfirmDialog();" />
+                        </button>
+                    </h:column>
+
+                </h:dataTable>
+
+                <nav aria-label="Page navigation example" jsf:id="tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
+                    <ul class="pagination justify-content-right">
+
+                        <li class="page-item #{empty bean.result ? 'disabled' : ''}">
+                            <a class="page-link"
+                               jsfc="h:commandLink"
+                               actionListener="#{bean.first()}">
+                                &lt;&lt;
+                                <p:ajax process="@this" update="resultTable tablePaginator" />
+                            </a>
+                        </li>
+
+                        <li class="page-item #{bean.hasPrevious() ? '' : 'disabled'}">
+                            <a class="page-link "
+                               jsfc="h:commandLink"
+                               actionListener="#{bean.back()}">
+                                &lt;
+                                <p:ajax process="@this" update="resultTable tablePaginator" />
+                            </a>
+                        </li>
+
+                        <li class="page-item disabled" jsf:rendered="#{empty bean.pagesRange}">
+                            <a class="page-link ">
+                                0
+                            </a>
+                        </li>
+
+                        <ui:repeat value="#{bean.pagesRange}" var="page">
+                            <li class="page-item #{bean.isCurrentPage(page) ? 'active' : ''}">
+                                <a class="page-link"
+                                   jsfc="h:commandLink"
+                                   actionListener="#{bean.goToPage(page)}">
+                                    #{page}
+                                    <p:ajax process="@this" update="resultTable tablePaginator" />
+                                </a>
+                            </li>
+                        </ui:repeat>
+
+                        <li class="page-item #{bean.hasNext() ? '' : 'disabled'}">
+                            <a class="page-link"
+                               jsfc="h:commandLink"
+                               actionListener="#{bean.foward()}">
+                                &gt;
+                                <p:ajax process="@this" update="resultTable tablePaginator" />
+                            </a>
+                        </li>
+
+                        <li class="page-item #{empty bean.result ? 'disabled' : ''}">
+                            <a class="page-link"
+                               jsfc="h:commandLink"
+                               actionListener="#{bean.last()}">
+                                &gt;&gt;
+                                <p:ajax process="@this" update="resultTable tablePaginator" />
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </ui:insert>
+    </ui:define>
+
+</ui:decorate>
