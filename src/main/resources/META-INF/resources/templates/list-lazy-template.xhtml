@@ -58,7 +58,7 @@
                              styleClass="table table-striped table-condensed table-bordered"
                              var="_item"
                              reflow="true"
-                             value="#{bean.dataTable.content}"
+                             value="#{bean.result}"
                              rows="10"
                              paginator="true"
                              paginatorPosition="bottom">
@@ -84,6 +84,7 @@
                     </h:column>
 
                 </h:dataTable>
+
                 <nav aria-label="Page navigation example" jsf:id="tablePaginator" style="margin-top: 0 !important; padding-top: 0;">
                     <ul class="pagination justify-content-right">
 
