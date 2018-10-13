@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .formLogin()
             .loginPage("/login.xhtml")
             .permitAll()
-            .failureUrl("/login.xhtml?error=true")
+            .failureUrl("/login.xhtml?auth=failure")
             .defaultSuccessUrl("/pages/controleacesso/permissao/permissao-search.xhtml")
         .and()
             .logout()

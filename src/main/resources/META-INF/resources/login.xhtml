@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces">
+      xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
     <title>Application</title>
@@ -16,6 +16,7 @@
 
 </h:head>
 <h:body >
+
     <h:form prependId="false">
         <div class="container">
             <div class="row">
@@ -24,6 +25,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Login</h3>
                         </div>
+
                             <div class="panel-body">
                                 <fieldset>
                                     <div class="form-group">
@@ -40,6 +42,12 @@
 
                                     <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
 
+                                    <c:if test="${param.auth eq 'failure'}">
+                                        <div class="alert alert-danger" role="alert">
+                                            <span class="alert-link" >Usuário e/ou senha incorreto(s). Tente novamente.</span>
+                                        </div>
+                                    </c:if>
+
                                 </fieldset>
                         </div>
                     </div>
@@ -47,5 +55,7 @@
             </div>
         </div>
     </h:form>
+
+
 </h:body>
 </html>

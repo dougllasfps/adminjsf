@@ -22,5 +22,21 @@ toastr.options = {
 }
 
 var toarstMessage = function(severity, message, title){
+    if(!severity){
+        severity = 'error'
+    }
+
+    if(!message){
+        message = 'ocorreu um erro.'
+    }
+
+    if(!title){
+        title = 'Erro'
+    }
+
     toastr[severity](message, title);
+}
+
+var showLoginErrorMessage = function(){
+    toarstMessage('error', 'Usuário e/ou senha incorreto(s). Tente novamente.', 'Erro');
 }
