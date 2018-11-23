@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <title>Application</title>
+
+    <h:outputStylesheet library="ionicons" name="dist/css/ionicons.min.css" />
+    <h:outputStylesheet library="adminlte" name="bootstrap/css/bootstrap.min.css" />
+    <h:outputStylesheet library="adminlte" name="css/AdminLTE.min.css" />
+    <h:outputStylesheet library="adminlte" name="css/skins/_all-skins.min.css" />
+    <h:outputStylesheet library="adminlte" name="plugins/iCheck/flat/blue.css" />
+
+</h:head>
+<h:body >
+
+    <div class="login-box">
+        <div class="login-logo">
+            <b>My App</b>
+        </div>
+
+        <div class="login-box-body">
+            <p class="login-box-msg">Entre para inicializar sua sessão</p>
+
+            <h:form method="post">
+
+                <div class="form-group has-feedback">
+                    <input  type="text" class="form-control" placeholder="Login ou Email" name="username" />
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Senha" name="password"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div>
+                            <input type="checkbox" /> Lembrar
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+                    </div>
+                </div>
+
+            </h:form>
+    </div>
+</div>
+
+
+</h:body>
+</html>

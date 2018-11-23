@@ -45,13 +45,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
         .and()
             .formLogin()
-            .loginPage("/login.xhtml")
+            .loginPage("/app/pages/login.xhtml")
             .permitAll()
-            .failureUrl("/login.xhtml?auth=failure")
+            .failureUrl("/app/pages/login.xhtml?auth=failure")
             .defaultSuccessUrl("/pages/controleacesso/permissao/permissao-search.xhtml")
         .and()
             .logout()
             .invalidateHttpSession(true)
-            .logoutSuccessUrl("/login.xhtml");
+            .logoutSuccessUrl("/app/pages/login.xhtml");
     }
 }

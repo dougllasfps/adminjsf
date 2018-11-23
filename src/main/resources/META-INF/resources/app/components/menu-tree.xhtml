@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <composite:interface>
+        <composite:attribute name="icon" required="false" default="" />
+        <composite:attribute name="label" required="false" default="" />
+    </composite:interface>
+
+    <composite:implementation>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-#{cc.attrs.icon}"></i>
+                <i class="fa fa-angle-left pull-right"></i>
+                <span>
+                    <h:outputText value="#{cc.attrs.label}" />
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <composite:insertChildren />
+            </ul>
+        </li>
+    </composite:implementation>
+
+</ui:composition>

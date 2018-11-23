@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:decorate template="/META-INF/resources/app/templates/template-padrao.xhtml"
+             xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:jsf="http://xmlns.jcp.org/jsf"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+
+
+    <div class="box box-#{props.color}">
+        <div className="box-header with-border">
+            <h3 className="box-title">
+                {props.title}
+            </h3>
+        </div>
+        <div className="box-body">
+            {props.children}
+        </div>
+    </div>
+
+</ui:decorate>
