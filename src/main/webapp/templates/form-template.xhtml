@@ -57,7 +57,7 @@
                                         <button
                                                 class="btn btn-default mainButton"
                                                 jsf:id="saveBtn"
-                                                jsf:rendered="#{entity.id eq null}"
+                                                jsf:rendered="#{bean.inserting}"
                                                 jsf:action="#{bean.save}">
                                             <i class="fa fa-save"></i>
                                             Salvar
@@ -66,19 +66,16 @@
                                         <button
                                                 class="btn btn-default mainButton"
                                                 jsf:id="updateBtn"
-                                                jsf:rendered="#{entity.id ne null}"
+                                                jsf:rendered="#{bean.updating}"
                                                 jsf:action="#{bean.update}">
-                                            <i class="fa fa-refresh"></i>
-                                            Atualizar
+                                            <i class="fa fa-refresh"></i>  Atualizar
                                         </button>
-
 
                                         <button
                                                 class="btn btn-danger"
                                                 jsf:id="backBtn"
                                                 jsf:outcome="#{bean.searchFormLocation}">
-                                            <i class="fa fa-times"></i>
-                                            Cancelar
+                                            <i class="fa fa-undo"></i>  Voltar
                                         </button>
 
                                     </div>

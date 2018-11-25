@@ -42,10 +42,9 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
     }
 
     private void prepareUpdate() {
-        Optional.ofNullable(getParamId()).ifPresent( id -> {
-            T entity = getService().prepareEntityData(Long.valueOf(id));
-            setEntity(entity);
-        });
+        T entity = Optional.ofNullable(getParamId()).map(id -> getService().prepareEntityData(Long.valueOf(id))).orElse(getService().createInstanceOfEntityClass());
+        setEntity(entity);
+        setParamId(null);
     }
 
     public void prepareInsert(){

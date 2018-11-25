@@ -23,7 +23,7 @@
     </ui:define>
 
     <ui:define name="header">
-        Permissão
+       <h:outputText value="#{not empty entity.id ? 'Permissao #'.concat(entity.id) : 'Permissão'}" />
     </ui:define>
 
     <ui:define name="formContent">
