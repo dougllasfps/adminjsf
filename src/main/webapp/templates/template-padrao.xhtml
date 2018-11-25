@@ -31,9 +31,10 @@
 
       <h:outputStylesheet library="css" name="toastr.min.css" />
       <h:outputStylesheet library="css" name="style.css" />
+      <h:outputStylesheet library="css" name="pace.css" />
 
   </h:head>
-  <h:body styleClass="hold-transition skin-green sidebar-mini">
+  <h:body styleClass="hold-transition skin-red sidebar-mini">
 
         <ui:include src="fragments/header.xhtml" />
         <ui:include src="fragments/sidebar.xhtml" />
@@ -42,15 +43,17 @@
           </div>
         <ui:include src="fragments/footer.xhtml" />
 
-        <h:outputScript library="js" name="jquery-2.2.3.min.js" />
-        <h:outputScript library="adminlte" name="bootstrap/js/bootstrap.min.js" />
-        <h:outputScript library="adminlte" name="plugins/jQueryUI/jquery-ui.min.js" />
-        <h:outputScript library="adminlte" name="plugins/fastclick/fastclick.min.js" />
-        <h:outputScript library="adminlte" name="plugins/slimScroll/jquery.slimscroll.min.js" />
-        <h:outputScript library="adminlte" name="js/app.min.js" />
+       <h:outputScript library="js" name="jquery-2.2.3.min.js" />
+       <h:outputScript library="adminlte" name="bootstrap/js/bootstrap.min.js" />
+       <h:outputScript library="adminlte" name="plugins/jQueryUI/jquery-ui.min.js" />
+       <h:outputScript library="adminlte" name="plugins/fastclick/fastclick.min.js" />
+       <h:outputScript library="adminlte" name="plugins/slimScroll/jquery.slimscroll.min.js" />
+       <h:outputScript library="adminlte" name="js/app.min.js" />
+       <h:outputScript library="js" name="pace.min.js" />
 
-        <h:outputScript library="js" name="toastr.min.js" />
-        <h:outputScript library="js" name="scripts.js" />
+
+       <h:outputScript library="js" name="toastr.min.js" />
+       <h:outputScript library="js" name="scripts.js" />
 
   </h:body>
 </html>

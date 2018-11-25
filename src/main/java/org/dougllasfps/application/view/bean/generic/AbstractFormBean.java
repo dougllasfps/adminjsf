@@ -70,4 +70,16 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
     public String getSearchFormLocation(){
         return "";
     }
+
+    public boolean isInserting(){
+        return paramAction == null || INSERT_ACTION.equals(paramAction);
+    }
+
+    public boolean isUpdating(){
+        return UPDATE_ACTION.equals(paramAction);
+    }
+
+    public boolean isViewing(){
+        return VIEW_ACTION.equals(paramAction);
+    }
 }

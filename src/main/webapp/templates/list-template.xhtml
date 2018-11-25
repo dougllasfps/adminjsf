@@ -43,6 +43,7 @@
                                         style="display: inline; padding-right: 5px !important;">
                                     <i class="fa fa-search"></i> Consultar
                                     <p:ajax process="@form"
+                                            onstart="Pace.restart();"
                                             listener="#{bean.find}"
                                             update="#{p:component('resultForm')}"/>
                                 </button>

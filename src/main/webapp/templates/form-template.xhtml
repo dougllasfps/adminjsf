@@ -3,6 +3,7 @@
              xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:jsf="http://xmlns.jcp.org/jsf"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              xmlns:app="http://xmlns.jcp.org/jsf/composite/components"
@@ -21,10 +22,12 @@
         </ui:insert>
 
         <section class="content-header">
-            <h1><ui:insert name="header">Header</ui:insert>
-                <small><ui:insert name="small">small</ui:insert></small>
+            <h1>
+                <ui:insert name="header">Header</ui:insert>
+                <small><ui:insert name="small"></ui:insert></small>
             </h1>
         </section>
+
         <section class="content">
             <div class="row">
                 <div class="col-md-#{cols}" >
@@ -37,6 +40,14 @@
                         </style>
 
                         <app:box>
+                            <f:facet name="title">
+                                <ui:insert name="boxTitle" >
+                                    <h:outputText value="Cadastro" rendered="#{bean.inserting}"/>
+                                    <h:outputText value="Atualização" rendered="#{bean.updating}" />
+                                    <h:outputText value="Visualização" rendered="#{bean.viewing}" />
+                                </ui:insert>
+                            </f:facet>
+
                             <ui:insert name="formContent"/>
                             <ui:insert name="submitButtons">
 
