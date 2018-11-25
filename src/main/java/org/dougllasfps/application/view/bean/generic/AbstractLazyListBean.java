@@ -6,9 +6,6 @@ import org.dougllasfps.application.view.bean.component.LazyDataTable;
 
 import javax.annotation.PostConstruct;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addWarnMessage;
 
 /**
@@ -20,7 +17,7 @@ public abstract class AbstractLazyListBean<T extends BaseEntity,S extends Abstra
 
     @PostConstruct
     public void init(){
-        super.init();
+        super.prepareView();
         this.dataTable = new LazyDataTable<>(getService(), getEntity());
     }
 

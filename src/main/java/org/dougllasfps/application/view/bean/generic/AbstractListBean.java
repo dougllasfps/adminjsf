@@ -3,7 +3,6 @@ package org.dougllasfps.application.view.bean.generic;
 import org.dougllasfps.application.model.BaseEntity;
 import org.dougllasfps.application.service.generic.AbstractService;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 import static org.dougllasfps.application.view.bean.util.JsfUtil.*;
@@ -15,10 +14,10 @@ public abstract class AbstractListBean<T extends BaseEntity, S extends AbstractS
 
     protected List<T> result;
 
-    @PostConstruct
-    public void init(){
+    public void prepareView(){
         T instanceOfEntityClass = getService().createInstanceOfEntityClass();
         setEntity(instanceOfEntityClass);
+        setResult(null);
     }
 
     public void validateSearch(){}
@@ -50,9 +49,8 @@ public abstract class AbstractListBean<T extends BaseEntity, S extends AbstractS
         this.result = result;
     }
 
-    public String sendToForm(T entity){
-    	addFlashParam("id", entity.getId().toString());
-        return getFormPageLocation();
+    public String toFormPage(Long id, String action){
+        return getFormPageLocation() + "?faces-redirect=true&id=" +id+"&action=" + action;
     }
 
     public void prepareDelete(T entity){
@@ -60,7 +58,7 @@ public abstract class AbstractListBean<T extends BaseEntity, S extends AbstractS
     }
     
     public String novo() {
-    	return getFormPageLocation();
+    	return getFormPageLocation() + "?faces-redirect=true&action=insert";
     }
 
     public String getFormPageLocation(){

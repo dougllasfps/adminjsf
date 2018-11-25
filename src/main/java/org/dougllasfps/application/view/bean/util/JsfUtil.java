@@ -68,15 +68,15 @@ public class JsfUtil implements Serializable {
         FacesContext.getCurrentInstance().addMessage(clientId, new FacesMessage( severityLevel , message, message  ) );
     }
 
-    public FacesMessage getInfoFacesMessage( String message ){
+    public FacesMessage getInfoFacesMessage(String message ){
         return new FacesMessage( FacesMessage.SEVERITY_INFO  , message, message  );
     }
 
-    public FacesMessage getErrorFacesMessage( String message ){
+    public FacesMessage getErrorFacesMessage(String message ){
         return new FacesMessage( FacesMessage.SEVERITY_ERROR  , message, message  );
     }
 
-    public FacesMessage getWarnFacesMessage( String message ){
+    public FacesMessage getWarnFacesMessage(String message ){
         return new FacesMessage( FacesMessage.SEVERITY_WARN  , message, message  );
     }
 
@@ -150,11 +150,11 @@ public class JsfUtil implements Serializable {
     }
 
     public static void addFlashParam(String param, String value){
-    	getExternalContext().getFlash().put(param, value);
+//    	getExternalContext().getFlash().put(param, value);
     }
     
     public static Object getFlashParam(String param){
-    	return getExternalContext().getFlash().get(param);
+    	return null;// getExternalContext().getFlash().get(param);
     }
 
 	private static ExternalContext getExternalContext() {

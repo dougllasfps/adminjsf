@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:decorate template="template-padrao.xhtml"
+             xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:jsf="http://xmlns.jcp.org/jsf"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:app="http://xmlns.jcp.org/jsf/composite/components"
+             xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="metadata">
+        <ui:insert name="metadata" />
+    </ui:define>
+
+    <ui:define name="content">
+
+        <ui:insert name="params">
+            <c:set var="bean" value="#{beanName}"/>
+            <c:set var="entity" value="#{bean.entity}"/>
+            <c:set var="cols" value="12" />
+        </ui:insert>
+
+        <section class="content-header">
+            <h1><ui:insert name="header">Header</ui:insert>
+                <small><ui:insert name="small">small</ui:insert></small>
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-#{cols}" >
+                    <p:messages id="messages"/>
+                    <h:form id="form" prependId="false">
+                        <style>
+                            .mainButton {
+                                margin-right: 10px;
+                            }
+                        </style>
+
+                        <app:box>
+                            <ui:insert name="formContent"/>
+                            <ui:insert name="submitButtons">
+
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                        <button
+                                                class="btn btn-default mainButton"
+                                                jsf:id="saveBtn"
+                                                jsf:rendered="#{entity.id eq null}"
+                                                jsf:action="#{bean.save}">
+                                            <i class="fa fa-save"></i>
+                                            Salvar
+                                        </button>
+
+                                        <button
+                                                class="btn btn-default mainButton"
+                                                jsf:id="updateBtn"
+                                                jsf:rendered="#{entity.id ne null}"
+                                                jsf:action="#{bean.update}">
+                                            <i class="fa fa-refresh"></i>
+                                            Atualizar
+                                        </button>
+
+
+                                        <button
+                                                class="btn btn-danger"
+                                                jsf:id="backBtn"
+                                                jsf:outcome="#{bean.searchFormLocation}">
+                                            <i class="fa fa-times"></i>
+                                            Cancelar
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </ui:insert>
+                        </app:box>
+                    </h:form>
+                </div>
+            </div>
+
+        </section>
+
+    </ui:define>
+
+</ui:decorate>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:app="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:p="http://primefaces.org/ui">
+
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu">
+                <app:menu-item to="index.xhtml" label="Inicio" icon="home" authenticated="true" />
+                <app:menu-item to="pages/login.xhtml" label="Login Example" icon="users" />
+                <app:menu-tree label="Cadastro" icon="edit">
+                    <app:menu-item to="/" label="Form Example" icon="usd" />
+                </app:menu-tree>
+                <app:menu-tree label="Controle de Acesso" icon="lock" roles="ADMIN">
+                    <app:menu-item to="pages/controleacesso/permissao/permissao-search.xhtml" label="Permissões" icon="ban" role="PERMISSAO" />
+                </app:menu-tree>
+                <app:menu-item to="logout" label="Sair" icon="caret-left" authenticated="true" />
+            </ul>
+        </section>
+    </aside>
+
+</ui:composition>

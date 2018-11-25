@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://xmlns.jcp.org/jsf/composite/primefaces"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      template="templates/template-padrao.xhtml">
+
+    <ui:define name="content">
+        <sec:authorize access="isAuthenticated()">
+            <h1>AUTENTICADO</h1>
+        </sec:authorize>
+        <p>
+
+            A CODEA/Gestão Pedagógica convida todas as coordenadorias a participar da campanha contra o câncer de mama. Na sexta-feira é solicitado que todos vistam a cor rosa, decorem suas coordenadorias e tirem fotos para divulgação. Toda semana será lançado um novo tema.
+
+
+
+            Tema dessa semana: Auto exame das Mamas - Como Realizar
+
+            1. No banho, ensaboe as mãos
+            2. Apoe uma mão na cabeça
+            3. Com a outra mão, apalpe com os dedos as mamas no sentido horário
+            4. Repita o passo anterior, mas no sentido anti-horário.
+            Se você detectar a presença de qualquer nódulo, consulte um médico para ter um diagnóstico correto.
+
+        </p>
+    </ui:define>
+</ui:composition >

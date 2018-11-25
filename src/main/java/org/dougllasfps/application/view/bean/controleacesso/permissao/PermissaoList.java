@@ -2,7 +2,6 @@ package org.dougllasfps.application.view.bean.controleacesso.permissao;
 
 import org.dougllasfps.application.model.controleacesso.Permissao;
 import org.dougllasfps.application.service.PermissaoService;
-import org.dougllasfps.application.view.bean.generic.AbstractLazyListBean;
 import org.dougllasfps.application.view.bean.generic.AbstractListBean;
 
 import javax.faces.view.ViewScoped;
@@ -18,6 +17,6 @@ public class PermissaoList extends AbstractListBean<Permissao, PermissaoService>
 
 	@Override
 	public String getFormPageLocation() {
-		return "/pages/controleacesso/permissao/permissao-form";
+		return "/pages/controleacesso/permissao/permissao-form.xhtml";
 	}
 }

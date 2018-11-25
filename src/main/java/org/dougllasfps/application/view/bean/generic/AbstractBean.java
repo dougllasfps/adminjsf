@@ -6,7 +6,6 @@ import org.dougllasfps.application.service.generic.AbstractService;
 import org.dougllasfps.application.view.bean.Action;
 
 import javax.inject.Inject;
-
 import java.util.function.Supplier;
 
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addErrorToastMessage;

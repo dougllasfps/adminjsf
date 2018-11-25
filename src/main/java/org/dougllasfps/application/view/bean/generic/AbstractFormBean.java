@@ -1,10 +1,11 @@
 package org.dougllasfps.application.view.bean.generic;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.dougllasfps.application.model.BaseEntity;
 import org.dougllasfps.application.service.generic.AbstractService;
-import org.dougllasfps.application.view.bean.util.JsfUtil;
 
-import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 import static org.dougllasfps.application.view.bean.util.JsfUtil.addSuccessToastMessage;
@@ -12,38 +13,44 @@ import static org.dougllasfps.application.view.bean.util.JsfUtil.addSuccessToast
 /**
  * Criado por dougllas.sousa em 10/10/2018.
  */
+
+@Getter
+@Setter
 public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends AbstractService<T>> extends AbstractBean<T, SERVICE> {
 
-    private Optional<Long> idEntidade;
+    private String paramId;
+    private String paramAction;
 
-    public AbstractFormBean(){
-        this.idEntidade = Optional.empty();
-    }
+    private boolean readOnlyForm;
 
-    @PostConstruct
-    public void init(){
+    protected static final String INSERT_ACTION  = "insert";
+    protected static final String UPDATE_ACTION  = "update";
+    protected static final String VIEW_ACTION    = "view";
 
-        String idString = (String) JsfUtil.getFlashParam(ID_PARAM);
-
-        Optional.ofNullable(idString).ifPresent( i ->{
-            Long id = Long.valueOf(i);
-            setIdEntidade( Optional.of(id) );
-        });
-
-        prepareForm();
-    }
-
-    public void prepareForm() {
-        if (getIdEntidade().isPresent()) {
-            T entity = getService().prepareEntityData(getIdEntidade().get());
-            setEntity(entity);
-        } else {
-            setEntity( getService().createInstanceOfEntityClass() );
-            prepareInsert();
+    public void prepareView() {
+        switch (paramAction) {
+            case VIEW_ACTION:
+                setReadOnlyForm(true);
+            case UPDATE_ACTION:
+                prepareUpdate();
+                break;
+            case INSERT_ACTION:
+            default:
+                prepareInsert();
+                break;
         }
     }
 
-    public void prepareInsert(){}
+    private void prepareUpdate() {
+        Optional.ofNullable(getParamId()).ifPresent( id -> {
+            T entity = getService().prepareEntityData(Long.valueOf(id));
+            setEntity(entity);
+        });
+    }
+
+    public void prepareInsert(){
+        setEntity( getService().createInstanceOfEntityClass() );
+    }
 
     public String save() {
         return doOnDefaultTryCatch(() -> {
@@ -59,13 +66,6 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
         }, () -> getSearchFormLocation());
     }
 
-    public Optional<Long> getIdEntidade() {
-        return idEntidade;
-    }
-
-    public void setIdEntidade(Optional<Long> idEntidade) {
-        this.idEntidade = idEntidade;
-    }
 
     public String getSearchFormLocation(){
         return "";
