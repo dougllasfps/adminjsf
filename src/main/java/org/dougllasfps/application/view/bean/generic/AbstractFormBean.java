@@ -1,6 +1,5 @@
 package org.dougllasfps.application.view.bean.generic;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.dougllasfps.application.model.BaseEntity;

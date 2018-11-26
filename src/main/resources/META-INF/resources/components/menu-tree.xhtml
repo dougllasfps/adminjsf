@@ -15,18 +15,19 @@
     </composite:interface>
 
     <composite:implementation>
-            <li class="treeview" jsf:rendered="#{cc.attrs.roles eq null ? cc.attrs.authenticated : authBean.hasAnyRole(cc.attrs.roles)}" >
-                <a href="#">
-                    <i class="fa fa-#{cc.attrs.icon}"></i>
-                    <i class="fa fa-angle-left pull-right"></i>
-                    <span>
-                        <h:outputText value="#{cc.attrs.label}" />
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <composite:insertChildren />
-                </ul>
-            </li>
+        <li class="treeview"
+            jsf:rendered="#{cc.attrs.roles eq null ? cc.attrs.authenticated : authBean.hasAnyRole(cc.attrs.roles)}" >
+            <a href="#">
+                <i class="fa fa-#{cc.attrs.icon}"></i>
+                <i class="fa fa-angle-left pull-right"></i>
+                <span>
+                    <h:outputText value="#{cc.attrs.label}" />
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <composite:insertChildren />
+            </ul>
+        </li>
     </composite:implementation>
 
 </ui:composition>
