@@ -35,14 +35,19 @@ public class Application extends SpringBootServletInitializer implements Servlet
     }
 
     @Override
-    public void setServletContext(ServletContext servletContext) {
+    public void setServletContext( ServletContext servletContext ) {
+
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
         servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", "true");
-//        servletContext.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/custom-security.taglib.xml");
 
+        servletContext.setInitParameter("javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE" , "true" );
+        servletContext.setInitParameter("javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL" , "false" );
+        servletContext.setInitParameter("com.sun.faces.allowTextChildren" , "true" );
+        servletContext.setInitParameter("com.sun.faces.enableMissingResourceLibraryDetection" , "native" );
         servletContext.setInitParameter("com.sun.faces.expressionFactory", "com.sun.el.ExpressionFactoryImpl");
 
-        servletContext.setInitParameter("primefaces.THEME", "bootstrap");
+        servletContext.setInitParameter("primefaces.THEME" , "bootstrap");
+        servletContext.setInitParameter("primefaces.UPLOADER" , "native" );
     }
 
     /**
