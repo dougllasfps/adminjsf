@@ -38,10 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf()
             .disable();
         http
-            .userDetailsService( userDetailsService )
             .authorizeRequests()
-            .antMatchers("/").permitAll()
-            .antMatchers("/**.xhtml").permitAll()
             .antMatchers("/javax.faces.resource/**").permitAll()
             .anyRequest().authenticated()
         .and()
@@ -49,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .loginPage("/pages/login.xhtml")
             .permitAll()
             .failureUrl("/pages/login.xhtml?auth=failure")
+            .permitAll()
             .defaultSuccessUrl("/pages/controleacesso/permissao/permissao-search.xhtml?faces-redirect=true")
         .and()
             .logout()

@@ -20,27 +20,30 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
     private String paramId;
     private String paramAction;
 
-    private boolean readOnlyForm;
-
     protected static final String INSERT_ACTION  = "insert";
     protected static final String UPDATE_ACTION  = "update";
     protected static final String VIEW_ACTION    = "view";
 
     public void prepareView() {
-        switch (paramAction) {
-            case VIEW_ACTION:
-                setReadOnlyForm(true);
-            case UPDATE_ACTION:
-                prepareUpdate();
-                break;
-            case INSERT_ACTION:
-            default:
-                prepareInsert();
-                break;
+        if(paramAction ==  null) {
+            prepareInsert();
+        }else{
+            switch (paramAction) {
+                case VIEW_ACTION:
+                    getEntity().setEditable(false);
+                case UPDATE_ACTION:
+                    prepareUpdate();
+                    break;
+                case INSERT_ACTION:
+                default:
+                    prepareInsert();
+                    break;
+            }
         }
+
     }
 
-    private void prepareUpdate() {
+    public void prepareUpdate() {
         T entity = Optional.ofNullable(getParamId()).map(id -> getService().prepareEntityData(Long.valueOf(id))).orElse(getService().createInstanceOfEntityClass());
         setEntity(entity);
         setParamId(null);
@@ -52,16 +55,24 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
 
     public String save() {
         return doOnDefaultTryCatch(() -> {
-            getService().save(getEntity());
-            addSuccessToastMessage("Registro salvo com sucesso.");
+            executeSave();
         }, () -> getSearchFormLocation());
+    }
+
+    public void executeSave() {
+        getService().save(getEntity());
+        addSuccessToastMessage("Registro salvo com sucesso.");
     }
 
     public String update() {
         return doOnDefaultTryCatch(() -> {
-            getService().update(getEntity());
-            addSuccessToastMessage("Registro atualizado com sucesso.");
+            executeUpdate();
         }, () -> getSearchFormLocation());
+    }
+
+    public void executeUpdate() {
+        getService().update(getEntity());
+        addSuccessToastMessage("Registro atualizado com sucesso.");
     }
 
 

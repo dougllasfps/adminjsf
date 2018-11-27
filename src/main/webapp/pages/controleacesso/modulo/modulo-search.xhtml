@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition template="/templates/list-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="params">
+        <c:set var="bean" value="#{moduloList}" />
+
+        <f:metadata>
+            <f:viewAction action="#{moduloList.prepareView()}" />
+        </f:metadata>
+    </ui:define>
+    
+    <ui:define name="header">
+        Módulos
+    </ui:define>
+
+    <ui:define name="boxTitle">
+        Consulta
+    </ui:define>
+
+    <ui:define name="formContent">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input jsf:id="inputDesc"
+                           jsf:value="#{bean.entity.descricao}"
+                           class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+    <ui:define name="resultColumns">
+        <p:column headerText="Label"
+                  width="300">
+            <h:outputText value="#{_item.label}"  />
+        </p:column>
+
+        <p:column headerText="Descrição" >
+            <h:outputText value="#{_item.descricao}" />
+        </p:column>
+    </ui:define>
+
+</ui:composition>

@@ -7,6 +7,12 @@ public interface BaseEntity {
 
     Long getId();
 
+    default boolean isEditable(){
+        return true;
+    }
+
+    default void setEditable(boolean value){}
+
     default boolean isPersisted(){
         return getId() != null;
     }

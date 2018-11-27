@@ -21,7 +21,12 @@ public class UserDetailService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
-		Collection<? extends GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ADMIN"), new SimpleGrantedAuthority("PERMISSAO"));
+		Collection<? extends GrantedAuthority> authorities
+				= Arrays.asList(new SimpleGrantedAuthority("ADMIN"),
+							    new SimpleGrantedAuthority("PERMISSAO"),
+				 				new SimpleGrantedAuthority("MODULO")
+		);
+
 		String password = encoder.encode("123");
 		return User
 				.builder()

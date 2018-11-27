@@ -1,14 +1,21 @@
 package org.dougllasfps.application.model.controleacesso;
 
+import lombok.*;
 import org.dougllasfps.application.model.BaseEntity;
 //import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Criado por dougllas.sousa em 09/10/2018.
  */
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table( name = "permissao",  schema = "controle_acesso")
 public class Permissao implements  BaseEntity {
@@ -23,38 +30,7 @@ public class Permissao implements  BaseEntity {
     @Column(name = "label")
     private String label;
 
-    public Permissao() {}
+    @OneToMany(mappedBy = "modulo")
+    private List<ModuloPermissao> modulos;
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getLabel() {
-        return this.label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public String toString() {
-        return "Permissão [id=" + this.id + ", descricao=" + this.descricao + "]";
-    }
-
-//    @Override
-    public String getAuthority() {
-        return getLabel();
-    }
 }

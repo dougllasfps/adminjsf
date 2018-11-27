@@ -1,11 +1,13 @@
 package org.dougllasfps.application.model.controleacesso;
 
+import org.dougllasfps.application.model.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "modulo", schema = "controle_acesso")
-public class Modulo implements Serializable {
+public class Modulo implements Serializable , BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,20 +10,20 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="params">
-        <c:set var="bean" value="#{permissaoForm}" />
-        <c:set var="entity" value="#{permissaoForm.entity}" />
+        <c:set var="bean" value="#{moduloForm}" />
+        <c:set var="entity" value="#{moduloForm.entity}" />
         <c:set var="cols" value="6" />
 
         <f:metadata>
-            <f:viewParam  name="id" value="#{permissaoForm.paramId}" />
-            <f:viewParam  name="action" value="#{permissaoForm.paramAction}" />
-            <f:viewAction action="#{permissaoForm.prepareView()}" />
+            <f:viewParam  name="id" value="#{moduloForm.paramId}" />
+            <f:viewParam  name="action" value="#{moduloForm.paramAction}" />
+            <f:viewAction action="#{moduloForm.prepareView()}" />
         </f:metadata>
 
     </ui:define>
 
     <ui:define name="header">
-       <h:outputText value="#{not empty entity.id ? 'Permissao #'.concat(entity.id) : 'Permissão'}" />
+       <h:outputText value="#{not empty entity.id ? 'Módulo #'.concat(entity.id) : 'Módulo'}" />
     </ui:define>
 
     <ui:define name="formContent">
@@ -42,24 +42,6 @@
                     <label>Label</label>
                     <input jsf:id="inputLabel" type="text" jsf:value="#{entity.label}" class="form-control"/>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <p:panel header="Módulos">
-                    <p:pickList id="pickList"
-                                value="#{bean.moduloDualList}"
-                                var="modulo"
-                                itemLabel="#{modulo.modulo.descricao}"
-                                itemValue="#{modulo}"
-                                responsive="true"
-                                filterMatchMode="contains"
-                    >
-                        <f:facet name="sourceCaption">Disponíveis</f:facet>
-                        <f:facet name="targetCaption">Selecionados</f:facet>
-                    </p:pickList>
-                </p:panel>
             </div>
         </div>
     </ui:define>
