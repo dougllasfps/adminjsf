@@ -1,6 +1,7 @@
 package org.dougllasfps.application;
 
 import com.sun.faces.config.ConfigureListener;
+import org.dougllasfps.application.configurations.CustomScopeAnnotationConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
@@ -8,10 +9,12 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
+import org.springframework.core.env.Environment;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.faces.bean.*;
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 
@@ -58,5 +61,17 @@ public class Application extends SpringBootServletInitializer implements Servlet
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController( "/" ).setViewName( "forward:/index.xhtml" );
         registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
+    }
+
+    @Bean
+    public static CustomScopeAnnotationConfigurer jsfScopeAnnotationsConfigurer(Environment environment) {
+        CustomScopeAnnotationConfigurer scopeAnnotationConfigurer = new CustomScopeAnnotationConfigurer();
+        scopeAnnotationConfigurer.addMapping(NoneScoped.class, "prototype");
+        scopeAnnotationConfigurer.addMapping(RequestScoped.class, "request");
+        scopeAnnotationConfigurer.addMapping(ViewScoped.class, "view");
+        scopeAnnotationConfigurer.addMapping(javax.faces.view.ViewScoped.class, "view");
+        scopeAnnotationConfigurer.addMapping(SessionScoped.class, "session");
+        scopeAnnotationConfigurer.addMapping(ApplicationScoped.class, "application");
+        return scopeAnnotationConfigurer;
     }
 }
