@@ -1,10 +1,10 @@
 package org.dougllasfps.application.view.bean;
 
+import org.dougllasfps.application.configurations.scope.RequestScoped;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;

@@ -30,7 +30,9 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
         }else{
             switch (paramAction) {
                 case VIEW_ACTION:
+                    prepareUpdate();
                     getEntity().setEditable(false);
+                    break;
                 case UPDATE_ACTION:
                     prepareUpdate();
                     break;
@@ -46,7 +48,6 @@ public abstract class AbstractFormBean<T extends BaseEntity, SERVICE extends Abs
     public void prepareUpdate() {
         T entity = Optional.ofNullable(getParamId()).map(id -> getService().prepareEntityData(Long.valueOf(id))).orElse(getService().createInstanceOfEntityClass());
         setEntity(entity);
-        setParamId(null);
     }
 
     public void prepareInsert(){

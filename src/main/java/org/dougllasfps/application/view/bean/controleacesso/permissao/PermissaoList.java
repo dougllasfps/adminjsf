@@ -4,7 +4,7 @@ import org.dougllasfps.application.model.controleacesso.Permissao;
 import org.dougllasfps.application.service.PermissaoService;
 import org.dougllasfps.application.view.bean.generic.AbstractListBean;
 
-import javax.faces.view.ViewScoped;
+import org.dougllasfps.application.configurations.scope.ViewScoped;
 import javax.inject.Named;
 
 /**
